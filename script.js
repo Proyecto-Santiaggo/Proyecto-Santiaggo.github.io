@@ -4,6 +4,26 @@ const fechaObjetivo = new Date("2025-02-12T00:00:00-03:00").getTime();
 // Fecha inicial (cuando comienza la cuenta regresiva)
 const fechaInicio = new Date().getTime();
 
+// Selecciona el elemento para el glitch
+const glitchElement = document.getElementById("glitch");
+
+// Función para generar caracteres aleatorios (efecto glitch)
+function generarGlitch() {
+  const caracteres = "EMPAABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+  let textoGlitch = "";
+
+  // Generar texto aleatorio
+  for (let i = 0; i < 10; i++) {
+    textoGlitch += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+  }
+
+  // Actualizar el texto del elemento
+  glitchElement.textContent = textoGlitch;
+}
+
+// Inicia el glitch al cargar la página
+const glitchInterval = setInterval(generarGlitch, 100); // Cambia el texto cada 100ms
+
 // Función que actualiza el contador
 function actualizarContador() {
   const ahora = new Date().getTime();
@@ -11,8 +31,13 @@ function actualizarContador() {
 
   // Si el tiempo ha terminado
   if (diferencia <= 0) {
-    document.querySelector(".contador").innerHTML = "<h1>¡El tiempo ha llegado!</h1>";
-    document.getElementById("progresoBarra").style.width = "100%"; // Barra llena
+    // Detener el efecto glitch
+    clearInterval(glitchInterval);
+
+    // Reemplazar el texto glitcheado por "Oblivion +"
+    glitchElement.textContent = "Oblivion +";
+
+    // Detener el contador
     clearInterval(intervalo);
     return;
   }
