@@ -1,5 +1,5 @@
-// Fecha objetivo del contador (13 de marzo de 2025 a las 16:00 hora Argentina)
-const fechaObjetivo = new Date("2025-03-13T16:00:00-03:00").getTime();
+// Fecha objetivo del contador (12 de febrero de 2025 a las 00:00 hora Argentina)
+const fechaObjetivo = new Date("2025-02-12T00:00:00-03:00").getTime();
 
 // Fecha inicial (cuando comienza la cuenta regresiva)
 const fechaInicio = new Date().getTime();
@@ -37,4 +37,4 @@ function actualizarContador() {
 }
 
 // Actualizar el contador cada segundo
-const intervalo = setInterval(actualizarContador, 1000);setInterval(actualizarContador, 1000);
+const intervalo = setInterval(actualizarContador, 1000);
