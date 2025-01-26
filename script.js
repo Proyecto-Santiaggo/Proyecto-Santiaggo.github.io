@@ -4,8 +4,7 @@ const fechaObjetivo = new Date("2025-02-12T00:00:00-03:00").getTime();
 // Fecha inicial (cuando comienza la cuenta regresiva)
 const fechaInicio = new Date().getTime();
 
-// Selecciona el elemento para el glitch
-const glitchElement = document.getElementById("glitch");
+const glitchElement = document.getElementById("generarGlitch");
 
 // Función para generar caracteres aleatorios (efecto glitch)
 function generarGlitch() {
@@ -19,10 +18,11 @@ function generarGlitch() {
 
   // Actualizar el texto del elemento
   glitchElement.textContent = textoGlitch;
+  console.log("Generando glitch...");
 }
 
 // Inicia el glitch al cargar la página
-const glitchInterval = setInterval(generarGlitch, 100); // Cambia el texto cada 100ms
+setInterval(generarGlitch, 100); // Cambia el texto cada 100ms
 
 // Función que actualiza el contador
 function actualizarContador() {
