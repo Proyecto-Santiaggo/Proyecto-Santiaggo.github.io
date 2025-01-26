@@ -9,20 +9,18 @@ const glitchElement = document.getElementById("glitch");
 
 // Función para generar caracteres aleatorios (efecto glitch)
 function generarGlitch() {
-  const caracteres = "EMPAABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+  const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
   let textoGlitch = "";
 
-  // Generar texto aleatorio
   for (let i = 0; i < 10; i++) {
     textoGlitch += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
   }
 
-  // Actualizar el texto del elemento
-  glitchElement.textContent = textoGlitch;
+  glitchElement.textContent = textoGlitch; // Actualiza el contenido del elemento
 }
 
 // Inicia el glitch al cargar la página
-const glitchInterval = setInterval(generarGlitch, 100); // Cambia el texto cada 100ms
+const glitchInterval = setInterval(generarGlitch, 100); // Cambia cada 100ms
 
 // Función que actualiza el contador
 function actualizarContador() {
