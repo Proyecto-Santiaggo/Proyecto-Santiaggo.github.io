@@ -18,11 +18,16 @@ function generarGlitch() {
 
   // Actualizar el texto del elemento
   glitchElement.textContent = textoGlitch;
-  console.log("Generando glitch...");
 }
 
-// Inicia el glitch al cargar la página
-setInterval(generarGlitch, 100); // Cambia el texto cada 100ms
+// Función que asegura que el glitch nunca se detenga
+function iniciarGlitch() {
+  generarGlitch();
+  setTimeout(iniciarGlitch, 100); // Cambia el texto cada 100ms
+}
+
+// Inicia el efecto glitch al cargar la página
+iniciarGlitch();
 
 // Función que actualiza el contador
 function actualizarContador() {
