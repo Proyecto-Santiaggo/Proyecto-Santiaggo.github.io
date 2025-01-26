@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Santiaggo</title>
+  <title>Glitch Countdown</title>
   <style>
     html, body {
       height: 100%;
@@ -18,14 +18,11 @@
       font-family: Arial, sans-serif;
       text-align: center;
     }
-    #titulo {
-      font-size: 2em;
-      color: white;
-    }
     #glitch {
       font-family: 'Courier New', Courier, monospace;
       color: #cccccc; /* Gris claro */
       font-weight: bold;
+      font-size: 2em;
       display: inline-block;
       animation: glitch-text 0.1s infinite;
     }
@@ -67,13 +64,10 @@
       width: 0%;
       transition: width 0.5s ease-out;
     }
-    .hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
-  <h1 id="titulo">Santiaggo - <span id="glitch"></span></h1>
+  <h1 id="glitch"></h1>
   <div class="contador">
     <div class="tiempo">
       <div class="unidad">
@@ -98,26 +92,14 @@
     <div class="progreso-barra" id="progresoBarra"></div>
   </div>
 
-  <!-- Audio de fondo -->
-  <audio id="backgroundMusic" loop>
-    <source src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1982715247" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio.
+  <!-- Reproductor de música en segundo plano -->
+  <audio autoplay loop>
+    <source src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1982715247&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
   </audio>
 
   <script>
-    // Selecciona el audio
-    const audio = document.getElementById('backgroundMusic');
-
-    // Reproduce la música cuando el usuario haga clic
-    document.body.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play().catch((error) => {
-          console.error('Error al intentar reproducir el audio:', error);
-        });
-      }
-    });
-
-    // Generación del texto glitch
+    // Selecciona el texto del glitch
     const glitchElement = document.getElementById('glitch');
     function generarGlitch() {
       const caracteres = "EMPAABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
