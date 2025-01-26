@@ -99,7 +99,7 @@
   </div>
 
   <!-- Audio de fondo -->
-  <audio id="backgroundMusic" class="hidden" loop>
+  <audio id="backgroundMusic" loop>
     <source src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1982715247" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
@@ -108,7 +108,7 @@
     // Selecciona el audio
     const audio = document.getElementById('backgroundMusic');
 
-    // Escucha cualquier clic del usuario para iniciar la música
+    // Reproduce la música cuando el usuario haga clic
     document.body.addEventListener('click', () => {
       if (audio.paused) {
         audio.play().catch((error) => {
@@ -117,7 +117,7 @@
       }
     });
 
-    // Simula el texto glitch
+    // Generación del texto glitch
     const glitchElement = document.getElementById('glitch');
     function generarGlitch() {
       const caracteres = "EMPAABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
@@ -129,7 +129,7 @@
     }
     setInterval(generarGlitch, 100);
 
-    // Actualiza el contador
+    // Actualización del contador
     const fechaObjetivo = new Date("2025-02-12T00:00:00-03:00").getTime();
     const fechaInicio = new Date().getTime();
 
