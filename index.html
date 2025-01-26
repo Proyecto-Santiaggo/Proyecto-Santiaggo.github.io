@@ -4,13 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Santiaggo</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #titulo {
+      font-size: 2em;
+      color: white;
+    }
+    #glitch {
+      font-family: 'Courier New', Courier, monospace;
+      color: #cccccc; /* Gris claro */
+      font-weight: bold;
+      display: inline-block;
+      animation: glitch-text 0.1s infinite;
+    }
+    @keyframes glitch-text {
+      0% { opacity: 1; transform: translate(0, 0); }
+      25% { opacity: 0.8; transform: translate(-2px, 2px); }
+      50% { opacity: 0.6; transform: translate(2px, -2px); }
+      75% { opacity: 0.8; transform: translate(-1px, 1px); }
+      100% { opacity: 1; transform: translate(0, 0); }
+    }
+    .contador {
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+    .tiempo {
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.5em;
+    }
+    .unidad {
+      margin: 0 10px;
+    }
+    .valor {
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+    .progreso-container {
+      width: 100%;
+      max-width: 400px;
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+      margin-top: 20px;
+    }
+    .progreso-barra {
+      height: 100%;
+      background-color: #cccccc; /* Gris claro */
+      width: 0%;
+      transition: width 0.5s ease-out;
+    }
+  </style>
 </head>
 <body>
-  <!-- Título con el efecto glitch -->
   <h1 id="titulo">Santiaggo - <span id="glitch"></span></h1>
-
-  <!-- Contenedor para la cuenta regresiva -->
   <div class="contador">
     <div class="tiempo">
       <div class="unidad">
@@ -31,11 +91,16 @@
       </div>
     </div>
   </div>
-
-  <!-- Contenedor de la barra de progreso -->
   <div class="progreso-container">
     <div class="progreso-barra" id="progresoBarra"></div>
   </div>
+
+  <!-- Audio de fondo desde SoundCloud -->
+  <iframe 
+    style="display: none;" 
+    src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/yWxzjLUBnkKFpMzV9&auto_play=true&loop=true&visual=false"
+    allow="autoplay">
+  </iframe>
 
   <script src="script.js"></script>
 </body>
