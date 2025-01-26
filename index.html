@@ -95,12 +95,11 @@
     <div class="progreso-barra" id="progresoBarra"></div>
   </div>
 
-  <!-- Audio de fondo desde SoundCloud -->
-  <iframe 
-    style="display: none;" 
-    src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/yWxzjLUBnkKFpMzV9&auto_play=true&loop=true&visual=false"
-    allow="autoplay">
-  </iframe>
+  <!-- Reproductor de audio de fondo -->
+  <audio id="audioFondo" autoplay loop>
+    <source src="https://api.soundcloud.com/tracks/ID-DE-TU-TRACK/stream?client_id=TU-CLIENT-ID" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
 
   <script src="script.js"></script>
 </body>
