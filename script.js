@@ -1,53 +1,58 @@
-// Fecha objetivo del contador (12 de febrero de 2025 a las 00:00 hora Argentina)
+// Fecha objetivo del contador
 const fechaObjetivo = new Date("2025-02-12T00:00:00-03:00").getTime();
 
-// Selecciona el elemento para el glitch
-const glitchElement = document.getElementById("glitch");
+// Guardar la fecha inicial en localStorage si no está presente
+if (!localStorage.getItem("fechaInicio")) {
+  localStorage.setItem("fechaInicio", new Date().getTime());
+}
+const fechaInicio = parseInt(localStorage.getItem("fechaInicio"), 10);
 
-// Función para generar caracteres aleatorios (efecto glitch)
+// Seleccionar elementos de la página
+const glitchElement = document.getElementById("glitch");
+const barraProgreso = document.getElementById("progresoBarra");
+
+// Función para generar texto glitch
 function generarGlitch() {
   const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
   let textoGlitch = "";
-
-  // Generar texto aleatorio
   for (let i = 0; i < 10; i++) {
     textoGlitch += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
   }
-
-  // Actualizar el texto del elemento
   glitchElement.textContent = textoGlitch;
 }
+const glitchInterval = setInterval(generarGlitch, 100); // Actualiza el texto glitch cada 100ms
 
-// Inicia el glitch al cargar la página
-const glitchInterval = setInterval(generarGlitch, 100); // Cambia el texto cada 100ms
-
-// Función que actualiza el contador
+// Función para actualizar el contador
 function actualizarContador() {
   const ahora = new Date().getTime();
   const diferencia = fechaObjetivo - ahora;
 
   // Si el tiempo ha terminado
   if (diferencia <= 0) {
-    // Detener el efecto glitch
     clearInterval(glitchInterval);
-
-    // Reemplazar el texto glitcheado por "Oblivion +"
-    glitchElement.textContent = "Oblivion +";
+    clearInterval(intervalo);
+    glitchElement.textContent = "¡Tiempo completado!";
     return;
   }
 
-  // Cálculos de días, horas, minutos y segundos
+  // Calcular días, horas, minutos y segundos
   const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
   const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
   const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-  // Actualizar valores en la página
+  // Mostrar los valores en la página
   document.getElementById("dias").textContent = dias;
   document.getElementById("horas").textContent = horas;
   document.getElementById("minutos").textContent = minutos;
   document.getElementById("segundos").textContent = segundos;
+
+  // Actualizar la barra de progreso
+  const tiempoTotal = fechaObjetivo - fechaInicio;
+  const tiempoRestante = fechaObjetivo - ahora;
+  const porcentaje = ((tiempoTotal - tiempoRestante) / tiempoTotal) * 100;
+  barraProgreso.style.width = `${porcentaje}%`;
 }
 
 // Actualizar el contador cada segundo
-setInterval(actualizarContador, 1000);
+const intervalo = setInterval(actualizarContador, 1000);
