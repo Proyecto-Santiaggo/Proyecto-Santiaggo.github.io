@@ -2,3 +2,20 @@ html {
   height: 100%;
   width: 100%;
 }
+
+/* Estilos para el efecto glitch */
+#generarGlitch {
+  display: inline-block; /* Asegura que sea visible */
+  font-family: 'Courier New', Courier, monospace; /* Estilo glitch */
+  color: #ffffff; /* Texto blanco */
+  font-weight: bold;
+  animation: glitch-text 0.1s infinite; /* Animación para parpadear */
+}
+
+@keyframes glitch-text {
+  0% { transform: translate(0, 0); opacity: 1; }
+  25% { transform: translate(-2px, 2px); opacity: 0.8; }
+  50% { transform: translate(2px, -2px); opacity: 0.6; }
+  75% { transform: translate(-1px, 1px); opacity: 0.8; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
