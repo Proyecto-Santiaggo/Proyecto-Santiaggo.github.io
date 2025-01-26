@@ -67,6 +67,13 @@
       width: 0%;
       transition: width 0.5s ease-out;
     }
+    /* Ocultar iframe para que no se vea */
+    .iframe-container {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
@@ -95,11 +102,17 @@
     <div class="progreso-barra" id="progresoBarra"></div>
   </div>
 
-  <!-- Reproductor de audio de fondo -->
-  <audio id="audioFondo" autoplay loop>
-    <source src="https://api.soundcloud.com/tracks/ID-DE-TU-TRACK/stream?client_id=TU-CLIENT-ID" type="audio/mpeg">
-    Tu navegador no soporta audio.
-  </audio>
+  <!-- Iframe de SoundCloud (oculto para solo reproducir el audio) -->
+  <div class="iframe-container">
+    <iframe
+      width="100%"
+      height="300"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1982715247&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+    </iframe>
+  </div>
 
   <script src="script.js"></script>
 </body>
