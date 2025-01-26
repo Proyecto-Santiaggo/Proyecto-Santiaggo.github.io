@@ -1,0 +1,95 @@
+/* Asegura que la página ocupa toda la ventana */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  font-family: Arial, sans-serif; /* Fuente por defecto */
+  text-align: center;
+}
+
+/* Estilo para el título */
+#titulo {
+  font-size: 2em;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Estilo para el texto con efecto glitch */
+#glitch {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5em;
+  color: #808080; /* Color gris */
+  font-weight: bold;
+  display: inline-block;
+  animation: glitch-text 0.1s infinite;
+}
+
+/* Animación del efecto glitch */
+@keyframes glitch-text {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  25% {
+    opacity: 0.8;
+    transform: translate(-2px, 2px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(2px, -2px);
+  }
+  75% {
+    opacity: 0.8;
+    transform: translate(-1px, 1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* Estilo de la cuenta regresiva */
+.contador {
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.tiempo {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5em;
+}
+
+.unidad {
+  margin: 0 10px;
+}
+
+.valor {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+/* Estilo de la barra de progreso */
+.progreso-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 20px;
+}
+
+.progreso-barra {
+  height: 100%;
+  background-color: #808080; /* Gris para la barra */
+  width: 0%;
+  transition: width 0.5s ease-out;
+}
