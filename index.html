@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soon...</title>
+  <title>PROYECTO SANTIAGGO</title>
   <style>
     body {
       margin: 0;
@@ -11,19 +11,20 @@
       color: white;
       font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       height: 100vh;
       text-align: center;
     }
 
     #glitch {
       font-family: 'Courier New', Courier, monospace;
+      font-size: 2.5em;
       color: #bdbdbd; /* Gris */
       font-weight: bold;
-      display: inline-block;
-      animation: glitch-text 0.1s infinite; /* Cambia rápido */
+      animation: glitch-text 0.1s infinite;
+      margin-bottom: 20px; /* Espacio con respecto a la cuenta regresiva */
     }
 
     @keyframes glitch-text {
@@ -88,6 +89,10 @@
   </style>
 </head>
 <body>
+  
+  <div id="glitch"></div>
+
+  <!-- Contador -->
   <div class="contador">
     <div class="tiempo">
       <div class="unidad">
@@ -108,10 +113,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Barra de progreso -->
   <div class="progreso-container">
     <div class="progreso-barra" id="progresoBarra"></div>
   </div>
-  <div id="glitch"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
