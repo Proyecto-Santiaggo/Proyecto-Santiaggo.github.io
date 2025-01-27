@@ -1,7 +1,5 @@
 // Fecha objetivo del contador (12 de febrero de 2025 a las 00:00)
 const fechaObjetivo = new Date("2025-02-12T00:00:00-03:00").getTime();
-
-// Fecha inicial (cuando comienza la cuenta regresiva)
 const fechaInicio = new Date().getTime();
 
 
@@ -12,32 +10,25 @@ function generarGlitch() {
   const caracteres = "EMPAABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
   let textoGlitch = "";
 
-  // Generar texto aleatorio
   for (let i = 0; i < 10; i++) {
     textoGlitch += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
   }
 
-  // Actualizar el texto del elemento
   glitchElement.textContent = textoGlitch;
 }
 
 
-const glitchInterval = setInterval(generarGlitch, 100); // Cambia el texto cada 100ms
+const glitchInterval = setInterval(generarGlitch, 100);
 
-// Función que actualiza el contador
+
 function actualizarContador() {
   const ahora = new Date().getTime();
   const diferencia = fechaObjetivo - ahora;
 
-  // Si el tiempo ha terminado
-  if (diferencia <= 0) {
-    
-    clearInterval(glitchInterval);
-
   
+  if (diferencia <= 0) {
+    clearInterval(glitchInterval);
     glitchElement.textContent = "Oblivion +";
-
-    // Detener el contador
     clearInterval(intervalo);
     return;
   }
@@ -54,12 +45,25 @@ function actualizarContador() {
   document.getElementById("minutos").textContent = minutos;
   document.getElementById("segundos").textContent = segundos;
 
-  // Actualizar la barra de progreso
+  // Calcular y guardar progreso
   const tiempoTotal = fechaObjetivo - fechaInicio; // Duración total del contador
   const tiempoRestante = fechaObjetivo - ahora; // Tiempo restante
-  const porcentaje = ((tiempoTotal - tiempoRestante) / tiempoTotal) * 100; // Porcentaje completado
+  const porcentaje = ((tiempoTotal - tiempoRestante) / tiempoTotal) * 100;
+
+  
+  localStorage.setItem("progreso", porcentaje);
+
+  // Actualizar la barra de tupu
   document.getElementById("progresoBarra").style.width = `${porcentaje}%`;
 }
+
+// Recuperar progreso al cargar tupu
+window.onload = () => {
+  const progresoGuardado = localStorage.getItem("progreso");
+  if (progresoGuardado) {
+    document.getElementById("progresoBarra").style.width = `${progresoGuardado}%`;
+  }
+};
 
 // Actualizar el contador cada segundo
 const intervalo = setInterval(actualizarContador, 1000);
