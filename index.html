@@ -5,50 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soon...</title>
   <style>
-    html, body {
-      height: 100%;
-      width: 100%;
+    body {
       margin: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
+      height: 100vh;
       text-align: center;
     }
+
     #glitch {
       font-family: 'Courier New', Courier, monospace;
-      color: #cccccc; /* Gris claro */
+      color: #bdbdbd; /* Gris */
       font-weight: bold;
-      font-size: 2em;
       display: inline-block;
-      animation: glitch-text 0.1s infinite;
+      animation: glitch-text 0.1s infinite; /* Cambia rápido */
     }
+
     @keyframes glitch-text {
-      0% { opacity: 1; transform: translate(0, 0); }
-      25% { opacity: 0.8; transform: translate(-2px, 2px); }
-      50% { opacity: 0.6; transform: translate(2px, -2px); }
-      75% { opacity: 0.8; transform: translate(-1px, 1px); }
-      100% { opacity: 1; transform: translate(0, 0); }
+      0% {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+      25% {
+        opacity: 0.8;
+        transform: translate(-2px, 2px);
+      }
+      50% {
+        opacity: 0.6;
+        transform: translate(2px, -2px);
+      }
+      75% {
+        opacity: 0.8;
+        transform: translate(-1px, 1px);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
     }
+
     .contador {
       max-width: 400px;
       margin-bottom: 20px;
     }
+
     .tiempo {
       display: flex;
       justify-content: space-around;
       font-size: 1.5em;
     }
+
     .unidad {
       margin: 0 10px;
     }
+
     .valor {
       font-size: 2.5em;
       font-weight: bold;
     }
+
     .progreso-container {
       width: 100%;
       max-width: 400px;
@@ -58,16 +78,16 @@
       height: 20px;
       margin-top: 20px;
     }
+
     .progreso-barra {
       height: 100%;
-      background-color: #cccccc; /* Gris claro */
+      background-color: white;
       width: 0%;
       transition: width 0.5s ease-out;
     }
   </style>
 </head>
 <body>
-  <div id="glitch"></div>
   <div class="contador">
     <div class="tiempo">
       <div class="unidad">
@@ -91,6 +111,7 @@
   <div class="progreso-container">
     <div class="progreso-barra" id="progresoBarra"></div>
   </div>
+  <div id="glitch"></div>
   <script src="script.js"></script>
 </body>
 </html>
