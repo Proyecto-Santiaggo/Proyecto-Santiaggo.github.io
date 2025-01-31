@@ -28,7 +28,7 @@ function actualizarContador() {
   
   if (diferencia <= 0) {
     clearInterval(glitchInterval);
-    glitchElement.textContent = "Oblivion +";
+    glitchElement.textContent = "DSN4T";
     clearInterval(intervalo);
     return;
   }
