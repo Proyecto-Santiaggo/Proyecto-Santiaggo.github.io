@@ -1,95 +1,76 @@
-/* Asegura que la página ocupa toda la ventana */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+/* Estilos para el fondo con efecto de código */
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black; /* Fondo negro */
-  color: white; /* Texto blanco */
-  font-family: Arial, sans-serif; /* Fuente por defecto */
-  text-align: center;
-}
-
-/* Estilo para el título */
-#titulo {
-  font-size: 2em;
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* Estilo para el texto con efecto glitch */
-#glitch {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.5em;
-  color: #808080; /* Color gris */
-  font-weight: bold;
-  display: inline-block;
-  animation: glitch-text 0.1s infinite;
-}
-
-/* Animación del efecto glitch */
-@keyframes glitch-text {
-  0% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-  25% {
-    opacity: 0.8;
-    transform: translate(-2px, 2px);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translate(2px, -2px);
-  }
-  75% {
-    opacity: 0.8;
-    transform: translate(-1px, 1px);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-}
-
-/* Estilo de la cuenta regresiva */
-.contador {
-  max-width: 400px;
-  margin-bottom: 20px;
-}
-
-.tiempo {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.5em;
-}
-
-.unidad {
-  margin: 0 10px;
-}
-
-.valor {
-  font-size: 2.5em;
-  font-weight: bold;
-}
-
-/* Estilo de la barra de progreso */
-.progreso-container {
-  width: 100%;
-  max-width: 400px;
-  background-color: #333;
-  border-radius: 10px;
+  flex-direction: column;
+  height: 100vh;
   overflow: hidden;
-  height: 20px;
+  position: relative;
+}
+
+/* Contenedor del fondo */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  white-space: nowrap;
+}
+
+/* Generación del código */
+@keyframes scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+.code-stream {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  text-align: center;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: scroll 5s linear infinite;
+  white-space: pre;
+}
+
+/* Texto principal */
+#main-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: cyan;
+  text-shadow: 0 0 5px cyan, 0 0 10px cyan;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* Barra de progreso retro */
+.progress-container {
+  width: 300px;
+  background-color: #222;
+  border: 2px solid cyan;
+  padding: 5px;
   margin-top: 20px;
 }
 
-.progreso-barra {
-  height: 100%;
-  background-color: #808080; /* Gris para la barra */
-  width: 0%;
-  transition: width 0.5s ease-out;
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: cyan;
+  text-align: center;
+  line-height: 20px;
+  color: black;
+  font-weight: bold;
 }
