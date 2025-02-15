@@ -1,13 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   const background = document.getElementById("code-background");
-  const words = ["oblivion", "komi", "remind", "dosimedia", "1319", "verum"];
+  const words = [
+    "oblivion", "komi", "remind", "dosimedia", "1319", "verum",
+    "licenciado posting", "puro clown 1", "puro clown 2", "puro clown 3", 
+    "pinkeye", "tontos y asociados", "el server más zzz", "mencho rol", 
+    "illuminatyland", "sigmaworld"
+  ];
   
   function generateCodeLine() {
     const codeStream = document.createElement("div");
     codeStream.className = "code-stream";
 
     let codeText = "";
-    for (let i = 0; i < 20; i++) { // Genera 20 elementos por línea
+    for (let i = 0; i < 20; i++) { 
       codeText += `<span class="glitch-word">${words[Math.floor(Math.random() * words.length)]}</span> `;
     }
 
@@ -18,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
       codeStream.remove();
-    }, 10000); // Eliminar el flujo de código después de 10 segundos
+    }, 10000); 
   }
 
-  setInterval(generateCodeLine, 100); // Genera líneas de código más rápido para llenar toda la pantalla
+  setInterval(generateCodeLine, 100); 
 });
