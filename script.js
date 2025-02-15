@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     codeStream.innerHTML = codeText;
-    codeStream.style.top = `${Math.random() * -100}px`; // Posición vertical aleatoria, inicia fuera de la pantalla
+    codeStream.style.top = `${Math.random() * -100}px`; // Posición vertical aleatoria
     codeStream.style.left = `${Math.random() * 100}%`; // Posición horizontal aleatoria
     background.appendChild(codeStream);
 
@@ -21,5 +21,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 10000); // Eliminar el flujo de código después de 10 segundos
   }
 
-  setInterval(generateCodeLine, 50); // Genera líneas de código cada 50ms para cubrir toda la pantalla rápidamente
+  setInterval(generateCodeLine, 100); // Genera líneas de código más rápido para llenar toda la pantalla
 });
