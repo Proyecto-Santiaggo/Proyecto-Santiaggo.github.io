@@ -8,15 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let codeText = "";
     for (let i = 0; i < 20; i++) { // Genera 20 elementos por línea
-      if (Math.random() > 0.5) {
-        codeText += `<span class="glitch-word">${words[Math.floor(Math.random() * words.length)]}</span> `;
-      } else {
-        codeText += Math.floor(Math.random() * 9999) + " ";
-      }
+      codeText += `<span class="glitch-word">${words[Math.floor(Math.random() * words.length)]}</span> `;
     }
 
     codeStream.innerHTML = codeText;
-    codeStream.style.top = `${Math.random() * -100}px`; // Posición vertical aleatoria
+    codeStream.style.top = `${Math.random() * -100}px`; // Posición vertical aleatoria, inicia fuera de la pantalla
     codeStream.style.left = `${Math.random() * 100}%`; // Posición horizontal aleatoria
     background.appendChild(codeStream);
 
@@ -25,5 +21,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 10000); // Eliminar el flujo de código después de 10 segundos
   }
 
-  setInterval(generateCodeLine, 500); // Genera líneas de código cada 500ms
+  setInterval(generateCodeLine, 50); // Genera líneas de código cada 50ms para cubrir toda la pantalla rápidamente
 });
