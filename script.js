@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
         codeStream.className = "code-stream";
         let codeText = "";
         
-        for (let i = 0; i < 100; i++) {
-            if (Math.random() > 0.7) {
+        for (let i = 0; i < 50; i++) {
+            if (Math.random() > 0.5) {
                 codeText += words[Math.floor(Math.random() * words.length)] + " ";
             } else {
-                codeText += Math.floor(Math.random() * 10);
+                codeText += Math.floor(Math.random() * 10) + " ";
             }
         }
 
@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         background.appendChild(codeStream);
 
         setTimeout(() => {
-            background.removeChild(codeStream);
+            codeStream.remove();
         }, 5000);
     }
 
-    setInterval(generateCode, 300);
+    setInterval(generateCode, 500);
 });
