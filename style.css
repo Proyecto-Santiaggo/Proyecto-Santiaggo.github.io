@@ -46,7 +46,7 @@ body {
 #main-text {
   font-size: 24px;
   font-weight: bold;
-  color: cyan;
+  color: red;
   text-shadow: 0 0 5px cyan, 0 0 10px cyan;
   animation: flicker 1.5s infinite alternate;
 }
@@ -60,7 +60,7 @@ body {
 /* Barra de progreso retro */
 .progress-container {
   width: 300px;
-  background-color: #222;
+  background-color: #ffff;
   border: 2px solid cyan;
   padding: 5px;
   margin-top: 20px;
