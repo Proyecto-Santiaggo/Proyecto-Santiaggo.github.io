@@ -1,55 +1,101 @@
-/* Estilos generales */
+/* Reset de márgenes y padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo de la página */
 body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
   background-color: black;
   color: white;
-  font-family: 'Courier New', Courier, monospace;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  position: relative;
+  flex-direction: column;
 }
 
-/* Contenedor del fondo */
-.background {
+/* Contenedor del fondo de las palabras */
+#code-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  pointer-events: none;
   z-index: -1;
 }
 
-/* Código en movimiento */
+/* Efecto de caída de palabras */
+@keyframes glitch-fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0.6;
+  }
+}
+
+/* Estilo para las palabras que caen */
 .code-stream {
   position: absolute;
-  width: 100%;
-  text-align: center;
   font-size: 18px;
-  color: rgba(150, 150, 150, 0.7);
-  font-weight: bold;
+  color: rgba(255, 255, 255, 0.9);
+  animation: glitch-fall 4s infinite linear;
   white-space: nowrap;
-  animation: scroll 10s linear infinite;
 }
 
-/* Animación de desplazamiento */
-@keyframes scroll {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-100vh); }
+/* Efecto glitch para las palabras */
+@keyframes glitch-animation {
+  0% {
+    transform: translateX(0) skew(0.5deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-2px) skew(-0.5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(2px) skew(0.5deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-2px) skew(-0.5deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0) skew(0.5deg);
+    opacity: 1;
+  }
 }
 
-/* Texto principal */
+/* Aplica el efecto glitch a cada palabra */
+.glitch-word {
+  animation: glitch-animation 0.5s infinite;
+}
+
+/* Texto principal en color rojo con parpadeo */
 #main-text {
   font-size: 24px;
   font-weight: bold;
   color: red;
-  text-shadow: 0 0 5px cyan, 0 0 10px cyan;
+  text-shadow: 0 0 5px red, 0 0 10px red;
   animation: flicker 1.5s infinite alternate;
 }
 
+/* Animación de parpadeo para el texto */
 @keyframes flicker {
   0% { opacity: 1; }
   50% { opacity: 0.8; }
@@ -59,8 +105,8 @@ body {
 /* Barra de progreso retro */
 .progress-container {
   width: 300px;
-  background-color: #ffff;
-  border: 2px solid cyan;
+  background-color: #222;
+  border: 2px solid white;
   padding: 5px;
   margin-top: 20px;
 }
@@ -68,7 +114,7 @@ body {
 .progress-bar {
   width: 100%;
   height: 20px;
-  background-color: cyan;
+  background-color: white;
   text-align: center;
   line-height: 20px;
   color: black;
