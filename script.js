@@ -1,10 +1,30 @@
-const playerImg = new Image();
-playerImg.src = 'https://i.imgur.com/jbt3I0s.png'; // Samurai estilo pixel
+document.addEventListener("DOMContentLoaded", function () {
+  const background = document.getElementById("code-background");
+  const words = [
+    "oblivion", "komi", "remind", "dosimedia", "1319", "verum",
+    "licenciado posting", "puro clown 1", "puro clown 2", "puro clown 3", 
+    "pinkeye", "tontos y asociados", "el server más zzz", "mencho rol", 
+    "illuminatyland", "sigmaworld"
+  ];
+  
+  function generateCodeLine() {
+    const codeStream = document.createElement("div");
+    codeStream.className = "code-stream";
 
-const enemyImg = new Image();
-enemyImg.src = 'https://i.imgur.com/40n6x0V.png'; // Alien verde
+    let codeText = "";
+    for (let i = 0; i < 20; i++) { 
+      codeText += `<span class="glitch-word">${words[Math.floor(Math.random() * words.length)]}</span> `;
+    }
 
-// Si querés fondo coliseo:
-document.getElementById("gameCanvas").style.backgroundImage =
-  "url('https://i.imgur.com/CgXsEvM.jpg')";
-document.getElementById("gameCanvas").style.backgroundSize = "cover";
+    codeStream.innerHTML = codeText;
+    codeStream.style.top = `${Math.random() * -100}px`; // Posición vertical aleatoria
+    codeStream.style.left = `${Math.random() * 100}%`; // Posición horizontal aleatoria
+    background.appendChild(codeStream);
+
+    setTimeout(() => {
+      codeStream.remove();
+    }, 10000); 
+  }
+
+  setInterval(generateCodeLine, 100); 
+});
