@@ -24,11 +24,13 @@ let player = {
 let keys = {};
 let enemies = [];
 let killCount = 0;
+let gameOver = false;
 
 document.addEventListener('keydown', e => keys[e.key] = true);
 document.addEventListener('keyup', e => keys[e.key] = false);
 
 function spawnEnemy() {
+  if (gameOver) return;
   enemies.push({
     x: Math.random() * (width - 50),
     y: 500,
@@ -53,42 +55,68 @@ function drawEnemies() {
 }
 
 function update() {
+  if (gameOver) return;
+
   if (keys['ArrowLeft']) player.x -= player.speed;
   if (keys['ArrowRight']) player.x += player.speed;
   if (keys[' ']) attack();
 
-  // Limitar a bordes
   player.x = Math.max(0, Math.min(width - player.width, player.x));
 
   enemies.forEach((enemy, i) => {
-    if (Math.abs(player.x - enemy.x) < 50 && !player.isTransformed && keys[' ']) {
+    if (Math.abs(player.x - enemy.x) < 50 && keys[' ']) {
       enemies.splice(i, 1);
       killCount++;
     }
   });
 
-  // Transformación al matar 10 enemigos
   if (killCount >= 10 && !player.isTransformed) {
     player.isTransformed = true;
-    showFinale();
+    endGame();
   }
 }
 
-function showFinale() {
+function attack() {
+  // Ataque simulado
+}
+
+function endGame() {
+  gameOver = true;
   setTimeout(() => {
-    ctx.fillStyle = 'black';
+    // Pantalla final
+    ctx.fillStyle = "black";
     ctx.fillRect(0, 0, width, height);
+
+    // Personaje malvado
+    ctx.filter = 'grayscale(100%) brightness(50%)';
+    ctx.drawImage(playerImg, width / 2 - 75, height / 2 - 100, 150, 200);
+    ctx.filter = 'none';
+
+    
     ctx.fillStyle = 'red';
-    ctx.font = '30px monospace';
-    ctx.fillText('EL HEROE SE HA CORROMPIDO...', 200, 300);
+    ctx.beginPath();
+    ctx.arc(width / 2 - 30, height / 2 - 20, 5, 0, 2 * Math.PI);
+    ctx.arc(width / 2 + 30, height / 2 - 20, 5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(width / 2 - 15, height / 2 + 30);
+    ctx.lineTo(width / 2 - 10, height / 2 + 50);
+    ctx.moveTo(width / 2 + 15, height / 2 + 30);
+    ctx.lineTo(width / 2 + 10, height / 2 + 50);
+    ctx.stroke();
+
+    // Texto final
+    ctx.fillStyle = "red";
+    ctx.font = "30px monospace";
+    ctx.fillText("2026...", 180, height - 50);
   }, 500);
 }
 
-function attack() {
-  // ataque con espada (placeholder: en realidad se puede dibujar una línea o sprite)
-}
-
 function loop() {
+  if (gameOver) return;
   ctx.clearRect(0, 0, width, height);
   update();
   drawPlayer();
