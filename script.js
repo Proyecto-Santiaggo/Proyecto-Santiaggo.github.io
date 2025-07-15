@@ -29,28 +29,4 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(generateCodeLine, 100); 
 });
 
-function traducirYTB() {
-  const input = document.getElementById("ytbInput").value.toLowerCase();
-  const resultado = document.getElementById("ytbResultado");
-
-  const alfabeto = {
-    "a": "ah", "b": "bor", "c": "kra", "d": "dor", "e": "el", "f": "fal", "g": "gru",
-    "h": "har", "i": "in", "j": "jae", "k": "kar", "l": "lor", "m": "miu", "n": "nu",
-    "ñ": "nya", "o": "oz", "p": "par", "q": "quo", "r": "reh", "s": "sil", "t": "tha",
-    "u": "ul", "v": "vak", "w": "wer", "x": "xor", "y": "yah", "z": "zul"
-  };
-
-  let traduccion = "";
-
-  for (let char of input) {
-    if (alfabeto[char]) {
-      traduccion += alfabeto[char];
-    } else {
-      traduccion += char;
-    }
-  }
-
-  resultado.textContent = traduccion;
-}
-
 }
