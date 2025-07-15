@@ -28,3 +28,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(generateCodeLine, 100); 
 });
+
+function traducirEsquizo() {
+  const input = document.getElementById("esquizoInput").value.trim();
+
+  const conjuroOriginal = `Vuhl azh merrek d’nai Santiaggo,
+linnor vesht — vesht — thulom kai’tar.
+Miun d’rezzha Mizunai, oklat ya bren Empanirr.
+Karzakh do’su, tresi faal menariokh.
+Nahl... nahl... Dosimedia no thirra,
+la khezer nurmol rampak-vek.
+Zharro knell veïka: Vïktor, cáscara sin voz.
+Runthal breth ka’ 2026:
+tres luces se pudren, una ríe.
+Santiaggo ya no duerme, solo imita.`;
+
+  const resultado = document.getElementById("resultadoEsquizo");
+
+  if (input === conjuroOriginal) {
+    resultado.textContent = "´12126";
+  } else if (input.length === 0) {
+    resultado.textContent = "Por favor, introduce algo.";
+  } else {
+    resultado.textContent = "Traducción no disponible.";
+  }
+}
