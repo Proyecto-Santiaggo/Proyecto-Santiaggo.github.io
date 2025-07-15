@@ -58,7 +58,6 @@ body {
   white-space: nowrap;
 }
 
-/* Efecto glitch para las palabras */
 @keyframes glitch-animation {
   0% {
     transform: translateX(0) skew(0.5deg);
@@ -103,23 +102,6 @@ body {
   100% { opacity: 1; }
 }
 
-
-.progress-container {
-  width: 300px;
-  background-color: #222;
-  border: 2px solid white;
-  padding: 5px;
-  margin-top: 20px;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 20px;
-  background-color: white;
-  text-align: center;
-  line-height: 20px;
-  color: black;
-  font-weight: bold;
 
 }
 
