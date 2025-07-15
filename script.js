@@ -29,27 +29,28 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(generateCodeLine, 100); 
 });
 
-function traducirEsquizo() {
-  const input = document.getElementById("esquizoInput").value.trim();
+function traducirYTB() {
+  const input = document.getElementById("ytbInput").value.toLowerCase();
+  const resultado = document.getElementById("ytbResultado");
 
-  const conjuroOriginal = `Vuhl azh merrek d’nai Santiaggo,
-linnor vesht — vesht — thulom kai’tar.
-Miun d’rezzha Mizunai, oklat ya bren Empanirr.
-Karzakh do’su, tresi faal menariokh.
-Nahl... nahl... Dosimedia no thirra,
-la khezer nurmol rampak-vek.
-Zharro knell veïka: Vïktor, cáscara sin voz.
-Runthal breth ka’ 2026:
-tres luces se pudren, una ríe.
-Santiaggo ya no duerme, solo imita.`;
+  const alfabeto = {
+    "a": "ah", "b": "bor", "c": "kra", "d": "dor", "e": "el", "f": "fal", "g": "gru",
+    "h": "har", "i": "in", "j": "jae", "k": "kar", "l": "lor", "m": "miu", "n": "nu",
+    "ñ": "nya", "o": "oz", "p": "par", "q": "quo", "r": "reh", "s": "sil", "t": "tha",
+    "u": "ul", "v": "vak", "w": "wer", "x": "xor", "y": "yah", "z": "zul"
+  };
 
-  const resultado = document.getElementById("resultadoEsquizo");
+  let traduccion = "";
 
-  if (input === conjuroOriginal) {
-    resultado.textContent = "´12126";
-  } else if (input.length === 0) {
-    resultado.textContent = "Por favor, introduce algo.";
-  } else {
-    resultado.textContent = "Traducción no disponible.";
+  for (let char of input) {
+    if (alfabeto[char]) {
+      traduccion += alfabeto[char];
+    } else {
+      traduccion += char;
+    }
   }
+
+  resultado.textContent = traduccion;
+}
+
 }
