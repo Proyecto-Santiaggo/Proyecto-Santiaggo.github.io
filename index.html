@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>#03</title>
-  <link rel="stylesheet" href="style.css">  <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="style.css">  
 </head>
 <body>
   <div id="code-background"></div>
@@ -13,6 +13,14 @@
     <div class="progress-bar">100%</div>
   </div>
 
-  <script src="script.js"></script>  <!-- Enlace al archivo JS -->
+  <script src="script.js"></script>  
+
+  <div id="translator-container">
+  <h2 title="Este idioma no debería tener forma">Traductor del idioma sin nombre</h2>
+  <textarea id="esquizoInput" placeholder="Introduce texto en el idioma..."></textarea>
+  <button onclick="traducirEsquizo()">Traducir</button>
+  <div id="resultadoEsquizo">...</div>
+</div>
+
 </body>
 </html>
