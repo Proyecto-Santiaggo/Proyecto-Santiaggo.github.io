@@ -1,39 +1,3 @@
-// ===========================
-
-function tokens(str) {
-  return str.toLowerCase().replace(/[.,!?¡¿;:()\[\]\n\r]+/g, " ").split(/\s+/).filter(Boolean);
-}
-
-function espToYtb(texto) {
-  const palabras = tokens(texto);
-  let sujeto = "", verbo = "", objetos = [];
-  palabras.forEach(word => {
-    if (sujetosES.includes(word)) sujeto = es2ytb[word] || word;
-    else if (verbosES.includes(word)) verbo = es2ytb[word] || word;
-    else objetos.push(es2ytb[word] || word);
-  });
-  return capitalize(`${verbo} ${objetos.join(" ")} ${sujeto}`.trim());
-}
-
-function ytbToEsp(texto) {
-  const lower = texto.toLowerCase().replace(/[^a-z0-9’\-\s]/gi, '').trim();
-  const conjuroYTB = `vuhl azh merrek d’nai sant linnor vesht vesht thulom kai’tar miun d’rezza mizzu oklat ya bren empranirra karzakh do’su resi faal menariokh nahl nahl disomeida2 no thirra la khezer nurmol rampak-vek zharro knell veïka viikktorr`;
-  if (lower === conjuroYTB.replace(/[^a-z0-9’\-\s]/gi, '')) {
-    return "Ese es quién se manifiesta por su reflejo dsnat (d'nai) Santt,
-quizás --quizás-- en breve saldra. Ninguna regresa, Mizu, poco se sabe, Empanada.
-
-Carece de sí, resiste marioneta. Silencio... silencio... dosimedia2 no vendrá, la verdad volvió clonando-él.
-Firmamento verr pronto viikktorr r....";
-  }
-
-  const palabras = tokens(texto);
-  if (palabras.length === 0) return "";
-  const verboEs = ytb2es[palabras[0]] || palabras[0];
-  const sujetoEs = ytb2es[palabras[palabras.length - 1]] || palabras[palabras.length - 1];
-  const objetosEs = palabras.slice(1, -1).map(w => ytb2es[w] || w);
-  return capitalize(`${sujetoEs} ${verboEs} ${objetosEs.join(" ")}`.trim());
-}
-
 function traducirBidireccional(texto) {
   const lower = texto.toLowerCase().trim();
 
@@ -49,39 +13,27 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  const conjuroYTB = `vuhl azh merrek d’nai sant, linnor vesht vesht thulom kai’tar. miun d’rezza mizzu, oklat ya bren empranirra. karzakh do’su, resi faal menariokh. nahl nahl disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell veïka: viikktorr`;
-  if (lower.replace(/[^a-z0-9’\-\s]/gi, '') === conjuroYTB.replace(/[^a-z0-9’\-\s]/gi, '')) {
-    const resultado = document.getElementById("ytbResultado");
-    resultado.innerHTML = `Ese es quién se manifiesta por su reflejo dsnat (d'nai) Santt,
-quizás --quizás-- en breve saldra. Ninguna regresa, Mizu, poco se sabe, Empanada.
-
-Carece de sí, resiste marioneta. Silencio... silencio... dosimedia2 no vendrá, la verdad volvió clonando-él.
-Firmamento verr pronto viikktorr r....`;
-    resultado.className = "ytb-trad-ok";
-    return;
-  }
-
   if (/^farzzr/i.test(lower)) {
     const resultado = document.getElementById("ytbResultado");
-    resultado.innerHTML = "https://youtu.be/WLzlhPWI2Lo";
+    resultado.innerHTML = `<a href='https://youtu.be/WLzlhPWI2Lo' target='_blank' style='color: red;'>https://youtu.be/WLzlhPWI2Lo</a>`;
     resultado.className = "ytb-bloqueado";
     return;
   }
 
-  const palabras = tokens(texto);
-  let scoreYTB = 0, scoreES = 0;
-  palabras.forEach(w => {
-    if (ytb2es[w]) scoreYTB++;
-    if (es2ytb[w]) scoreES++;
-  });
-  const output = (scoreYTB > scoreES) ? ytbToEsp(texto) : espToYtb(texto);
-  const resultado = document.getElementById("ytbResultado");
-  resultado.textContent = output;
-  resultado.className = "ytb-trad-ok";
-}
+  const conjuroOriginal = `vuhl azh merrek d'nai sant, linnor vesht --vesht--thulom kai'tar. miun d'rezza mizzu, oklat ya bren empranirra. karzakh do'su, resi faal menariokh. nahl... nahl.. disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell velka: viikktor.`;
+  const textoSinPunt = lower.replace(/[^a-z0-9\\s’'-]/gi, '').replace(/\\s+/g, '');
+  const conjuroSinPunt = conjuroOriginal.toLowerCase().replace(/[^a-z0-9\\s’'-]/gi, '').replace(/\\s+/g, '');
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  if (textoSinPunt === conjuroSinPunt) {
+    const resultado = document.getElementById("ytbResultado");
+    resultado.innerHTML = `Ese es quién se manifiesta por su reflejo dsnat Santt,<br>quizás --quizás-- en breve saldra. Ninguna regresa, <span class='borroso'>Mizu</span>, poco se sabe, <span class='borroso'>Empanada</span>.<br><br>Carece de sí, resiste marioneta. Silencio... silencio... <span class='borroso'>dosimedia2</span> no vendrá, la verdad volvió clonando-él.<br>Firmamento verr pronto <strong>viikktorr r....</strong>`;
+    resultado.className = "ytb-trad-ok";
+    return;
+  }
+
+  const resultado = document.getElementById("ytbResultado");
+  resultado.textContent = "No se puede traducir esto.";
+  resultado.className = "ytb-trad-ok";
 }
 
 function traducirYTB() {
