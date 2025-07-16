@@ -92,21 +92,41 @@ body {
   text-align: left;
 }
 
+.ytb-trad-ok {
+  color: white;
+}
+
 .borroso {
   color: white;
-  filter: blur(1px);
-  text-shadow: 0 0 4px #ccc;
+  filter: blur(2px) contrast(120%);
+  text-shadow: 0 0 8px #ccc, 0 0 12px white;
   pointer-events: none;
+  animation: glitch-borroso 1s infinite steps(2, jump-none);
+}
+
+@keyframes glitch-borroso {
+  0% { transform: translate(0px, 0px); opacity: 1; }
+  20% { transform: translate(1px, -1px); opacity: 0.8; }
+  40% { transform: translate(-1px, 1px); opacity: 0.9; }
+  60% { transform: translate(1px, 1px); opacity: 1; }
+  80% { transform: translate(-1px, -1px); opacity: 0.85; }
+  100% { transform: translate(0px, 0px); opacity: 1; }
 }
 
 .ytb-farzzr {
-  color: black;
+  color: white;
   background-color: #000;
   font-weight: bold;
   font-family: monospace;
   padding: 10px;
   border-radius: 6px;
   text-align: center;
+  animation: pulse-farzzr 1.5s infinite alternate;
+}
+
+@keyframes pulse-farzzr {
+  from { text-shadow: 0 0 4px red; }
+  to   { text-shadow: 0 0 12px red, 0 0 6px white; }
 }
 
 .ytb-bloqueado {
@@ -118,15 +138,12 @@ body {
   border-radius: 8px;
 }
 
-.ytb-trad-ok {
-  color: white;
-}
-
 @media (max-width: 480px) {
   #ytbInput {
     height: 80px;
     font-size: 14px;
   }
+
   #ytbResultado {
     font-size: 15px;
   }
