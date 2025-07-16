@@ -1,4 +1,4 @@
-/* =========  EFECTO GLITCH DE PALABRAS  ========= */
+/* fr */
 document.addEventListener("DOMContentLoaded", () => {
   const background = document.getElementById("code-background");
   const words = [
@@ -28,69 +28,105 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(generateCodeLine, 100);
 });
 
-/* =========  TRADUCTOR YTB <-> ESPAÑOL  ========= */
 const es2ytb = {
-  "hola":"vuhl","estoy":"melthar","soy":"melthar","eres":"melzar","somos":"melser","es":"thal",
-  "yo":"saar","tú":"zahr","él":"vahn","ella":"velna","nosotros":"seran","ustedes":"zerrun","ellos":"velnor",
-  "una":"ka","un":"ka","gran":"zulken","pequeño":"thrin","página":"noreth","en":"noz",
-  "correr":"vekral","comer":"drokar","leer":"zirral","vivir":"morhal","amar":"ruhnal","amo":"ruhnar",
-  "tiempo":"zhul","vida":"mor","muerte":"drak","luz":"felyn","oscuridad":"varkun"
+  "hola": "vuhl",  "estoy": "melthar", "soy": "melthar", "eres": "melzar",
+  "somos": "melser", "es": "thal",   "yo": "saar",  "tú": "zahr",
+  "él": "vahn", "ella": "velna", "nosotros": "seran", "ustedes": "zerrun",
+  "ellos": "velnor", "una": "ka", "un": "ka", "gran": "zulken",
+  "pequeño": "thrin", "página": "noreth", "en": "noz", "correr": "vekral",
+  "comer": "drokar", "leer": "zirral", "vivir": "morhal", "amar": "ruhnal",
+  "amo": "ruhnar", "tiempo": "zhul", "vida": "mor", "muerte": "drak",
+  "luz": "felyn", "oscuridad": "varkun"
 };
-const ytb2es = Object.fromEntries(Object.entries(es2ytb).map(([es,ytb]) => [ytb, es]));
+const ytb2es = Object.fromEntries(Object.entries(es2ytb).map(([k, v]) => [v, k]));
+const sujetosES = ["yo", "tú", "él", "ella", "nosotros", "ustedes", "ellos"];
+const verbosES = ["estoy", "soy", "eres", "somos", "es", "amar", "amo", "comer", "leer", "vivir", "correr"];
 
-const sujetosES = ["yo","tú","él","ella","nosotros","ustedes","ellos"];
-const verbosES  = ["estoy","soy","eres","somos","es","amar","amo","comer","leer","vivir","correr"];
+function tokens(str) {
+  return str.toLowerCase().replace(/[.,!?¡¿;:()\[\]\n\r]+/g, " ").split(/\s+/).filter(Boolean);
+}
 
-const tokens = s =>
-  s.toLowerCase()
-   .replace(/[.,!?¡¿;:()\\[\\]\\n\\r]+/g," ")
-   .trim()
-   .split(/\s+/)
-   .filter(Boolean);
-
-/* ---- ESPAÑOL → YTB  (reordena a Verbo + Objeto + Sujeto) ---- */
-function espToYtb(txt){
-  const palabras = tokens(txt);
-  let sujeto="", verbo="", objetos=[];
-  for(const w of palabras){
-    if(sujetosES.includes(w))       sujeto = es2ytb[w] ?? w;
-    else if(verbosES.includes(w))   verbo  = es2ytb[w] ?? w;
-    else                            objetos.push(es2ytb[w] ?? w);
-  }
+function espToYtb(texto) {
+  const palabras = tokens(texto);
+  let sujeto = "", verbo = "", objetos = [];
+  palabras.forEach(word => {
+    if (sujetosES.includes(word)) sujeto = es2ytb[word] || word;
+    else if (verbosES.includes(word)) verbo = es2ytb[word] || word;
+    else objetos.push(es2ytb[word] || word);
+  });
   return capitalize(`${verbo} ${objetos.join(" ")} ${sujeto}`.trim());
 }
 
-/* ---- YTB → ESPAÑOL  (reordena a Sujeto + Verbo + Objeto) ---- */
-function ytbToEsp(txt){
-  const palabras = tokens(txt);
-  if(!palabras.length) return "";
-  const verbo  = ytb2es[palabras[0]] ?? palabras[0];
-  const sujeto = ytb2es[palabras.at(-1)] ?? palabras.at(-1);
-  const objs   = palabras.slice(1,-1).map(w => ytb2es[w] ?? w);
-  return capitalize(`${sujeto} ${verbo} ${objs.join(" ")}`.trim());
+function ytbToEsp(texto) {
+  const palabras = tokens(texto);
+  if (palabras.length === 0) return "";
+  const verboEs = ytb2es[palabras[0]] || palabras[0];
+  const sujetoEs = ytb2es[palabras[palabras.length - 1]] || palabras[palabras.length - 1];
+  const objetosEs = palabras.slice(1, -1).map(w => ytb2es[w] || w);
+  return capitalize(`${sujetoEs} ${verboEs} ${objetosEs.join(" ")}`.trim());
 }
 
-/* ---- Decide dirección automáticamente ---- */
-function traducirBidireccional(txt){
-  const palabras = tokens(txt);
-  let scoreYTB=0, scoreES=0;
-  for(const w of palabras){
-    if(ytb2es[w]) scoreYTB++;
-    if(es2ytb[w]) scoreES++;
+function traducirBidireccional(texto) {
+  const lower = texto.toLowerCase().trim();
+
+  // X //
+  const bloqueadas = [
+    "tres luces se apagan",
+    "una se rie",
+    "tres luces se apagan, una se rie"
+  ];
+  if (bloqueadas.includes(lower)) {
+    const resultado = document.getElementById("ytbResultado");
+    resultado.textContent = "FARZZR NAM'SA DOL AB DERVA EHRRA OREOOR";
+    resultado.className = "ytb-farzzr";
+    return;
   }
-  return (scoreYTB > scoreES) ? ytbToEsp(txt) : espToYtb(txt);
+
+  // CC //
+  const conjuroYTB = `vuhl azh merrek d’nai sant, linnor vesht vesht thulom kai’tar. miun d’rezza mizzu, oklat ya bren empranirra. karzakh do’su, resi faal menariokh. nahl nahl disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell veïka: viikktorr`;
+  if (lower.replace(/[^a-z0-9’\-\s]/gi, '') === conjuroYTB.replace(/[^a-z0-9’\-\s]/gi, '')) {
+    const resultado = document.getElementById("ytbResultado");
+    resultado.innerHTML = `Ese es quién se manifiesta por su reflejo: Santt.<br>Quizás —quizás— en breve saldrá.<br>Ninguna regresa, <span class='borroso'>Mizu</span>… poco se sabe… <span class='borroso'>Empanada</span>.<br><br>Carece de sí. Resiste, marioneta.<br>Silencio… silencio…<br><span class='borroso'>Dosimedia2</span> no vendrá.<br>La verdad volvió clonando-él.<br><br>El firmamento verá pronto a…<br><strong>Viikktorr r...</strong>`;
+    resultado.className = "ytb-trad-ok";
+    return;
+  }
+
+  // JJ
+  if (/^farzzr/i.test(lower)) {
+    const resultado = document.getElementById("ytbResultado");
+    resultado.innerHTML = "⬛";
+    resultado.className = "ytb-bloqueado";
+    return;
+  }
+
+  // DD
+  const palabras = tokens(texto);
+  let scoreYTB = 0, scoreES = 0;
+  palabras.forEach(w => {
+    if (ytb2es[w]) scoreYTB++;
+    if (es2ytb[w]) scoreES++;
+  });
+  const output = (scoreYTB > scoreES) ? ytbToEsp(texto) : espToYtb(texto);
+  const resultado = document.getElementById("ytbResultado");
+  resultado.textContent = output;
+  resultado.className = "ytb-trad-ok";
 }
 
-/* ---- Helper ---- */
-const capitalize = s => s ? s[0].toUpperCase() + s.slice(1) : s;
-
-/* ---- Función GLOBAL para el botón ---- */
-function traducirYTB(){
-  const input = document.getElementById("ytbInput").value.trim();
-  const out   = document.getElementById("ytbResultado");
-  out.textContent = input ? traducirBidireccional(input)
-                          : "Por favor, introduce un texto.";
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-/* Exponemos la función a window en caso de entornos estrictos */
+function traducirYTB() {
+  const inputEl = document.getElementById("ytbInput");
+  const resultEl = document.getElementById("ytbResultado");
+  const inputText = inputEl.value.trim();
+  if (!inputText) {
+    resultEl.textContent = "Por favor, introduce un texto.";
+    resultEl.className = "ytb-trad-ok";
+    return;
+  }
+  traducirBidireccional(inputText);
+}
+
 window.traducirYTB = traducirYTB;
+
