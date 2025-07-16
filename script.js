@@ -19,7 +19,11 @@ function ytbToEsp(texto) {
   const lower = texto.toLowerCase().replace(/[^a-z0-9’\-\s]/gi, '').trim();
   const conjuroYTB = `vuhl azh merrek d’nai sant linnor vesht vesht thulom kai’tar miun d’rezza mizzu oklat ya bren empranirra karzakh do’su resi faal menariokh nahl nahl disomeida2 no thirra la khezer nurmol rampak-vek zharro knell veïka viikktorr`;
   if (lower === conjuroYTB.replace(/[^a-z0-9’\-\s]/gi, '')) {
-    return "Ese es quién se manifiesta por su reflejo: Santt.\nQuizás —quizás— en breve saldrá.\nNinguna regresa, Mizu… poco se sabe… Empanada.\n\nCarece de sí. Resiste, marioneta.\nSilencio… silencio…\nDosimedia² no vendrá.\nLa verdad volvió clonando-él.\n\nEl firmamento verá pronto a…\nViikktorr r...";
+    return "Ese es quién se manifiesta por su reflejo dsnat (d'nai) Santt,
+quizás --quizás-- en breve saldra. Ninguna regresa, Mizu, poco se sabe, Empanada.
+
+Carece de sí, resiste marioneta. Silencio... silencio... dosimedia2 no vendrá, la verdad volvió clonando-él.
+Firmamento verr pronto viikktorr r....";
   }
 
   const palabras = tokens(texto);
