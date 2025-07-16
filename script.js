@@ -1,19 +1,5 @@
 // ===========================
 
-const es2ytb = {
-  "hola": "vuhl",  "estoy": "melthar", "soy": "melthar", "eres": "melzar",
-  "somos": "melser", "es": "thal",   "yo": "saar",  "tú": "zahr",
-  "él": "vahn", "ella": "velna", "nosotros": "seran", "ustedes": "zerrun",
-  "ellos": "velnor", "una": "ka", "un": "ka", "gran": "zulken",
-  "pequeño": "thrin", "página": "noreth", "en": "noz", "correr": "vekral",
-  "comer": "drokar", "leer": "zirral", "vivir": "morhal", "amar": "ruhnal",
-  "amo": "ruhnar", "tiempo": "zhul", "vida": "mor", "muerte": "drak",
-  "luz": "felyn", "oscuridad": "varkun"
-};
-const ytb2es = Object.fromEntries(Object.entries(es2ytb).map(([k, v]) => [v, k]));
-const sujetosES = ["yo", "tú", "él", "ella", "nosotros", "ustedes", "ellos"];
-const verbosES = ["estoy", "soy", "eres", "somos", "es", "amar", "amo", "comer", "leer", "vivir", "correr"];
-
 function tokens(str) {
   return str.toLowerCase().replace(/[.,!?¡¿;:()\[\]\n\r]+/g, " ").split(/\s+/).filter(Boolean);
 }
