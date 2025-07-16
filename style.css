@@ -28,17 +28,13 @@ body {
 }
 
 @keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 1;
-  }
-  20%, 22%, 24%, 55% {
-    opacity: 0;
-  }
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0; }
 }
 
 #ytb-translator-container {
   margin: 60px auto;
-  background-color: rgba(0, 0, 0, 0.85); /* fondo más opaco */
+  background-color: rgba(0, 0, 0, 0.85);
   padding: 20px;
   border-radius: 12px;
   width: 90%;
@@ -53,10 +49,8 @@ body {
 
 #ytb-translator-container h2 {
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 10px;
-  font-weight: normal;
-  letter-spacing: 1px;
 }
 
 #ytbInput {
@@ -98,10 +92,6 @@ body {
   text-align: left;
 }
 
-.ytb-trad-ok {
-  color: white;
-}
-
 .borroso {
   color: white;
   filter: blur(1px);
@@ -121,11 +111,15 @@ body {
 
 .ytb-bloqueado {
   background-color: black;
-  color: black;
-  font-size: 40px;
+  color: red;
+  font-size: 20px;
   text-align: center;
   padding: 20px;
   border-radius: 8px;
+}
+
+.ytb-trad-ok {
+  color: white;
 }
 
 @media (max-width: 480px) {
@@ -133,7 +127,6 @@ body {
     height: 80px;
     font-size: 14px;
   }
-
   #ytbResultado {
     font-size: 15px;
   }
