@@ -102,6 +102,62 @@ body {
   100% { opacity: 1; }
 }
 
+#ytb-translator-container {
+  margin-top: 40px;
+  background-color: #111;
+  padding: 20px;
+  border: 2px solid #555;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  z-index: 2;
+}
+
+#ytb-translator-container h2 {
+  color: #ccc;
+  margin-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px #555;
+  font-style: italic;
+  cursor: help;
+}
+
+#ytbInput {
+  width: 100%;
+  height: 120px;
+  background-color: #222;
+  color: #eee;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-family: monospace;
+  margin-bottom: 10px;
+}
+
+#ytb-translator-container button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#ytb-translator-container button:hover {
+  background-color: #666;
+}
+
+#ytbResultado {
+  margin-top: 15px;
+  color: #8f8;
+  font-family: monospace;
+  background-color: #000;
+  padding: 10px;
+  border-radius: 6px;
+}
+
 
 }
 
