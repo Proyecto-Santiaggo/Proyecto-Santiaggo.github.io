@@ -1,32 +1,4 @@
-/* fr */
-document.addEventListener("DOMContentLoaded", () => {
-  const background = document.getElementById("code-background");
-  const words = [
-    "oblivion", "komi", "remind", "dosimedia", "1319", "verum",
-    "licenciado posting", "puro clown 1", "puro clown 2", "puro clown 3",
-    "pinkeye", "tontos y asociados", "el server más zzz", "mencho rol",
-    "illuminatyland", "sigmaworld"
-  ];
-
-  function generateCodeLine() {
-    const div = document.createElement("div");
-    div.className = "code-stream";
-
-    let html = "";
-    for (let i = 0; i < 20; i++) {
-      html += `<span class="glitch-word">${words[Math.floor(Math.random() * words.length)]}</span> `;
-    }
-
-    div.innerHTML = html;
-    div.style.top  = `${Math.random() * -100}px`;
-    div.style.left = `${Math.random() * 100}%`;
-    background.appendChild(div);
-
-    setTimeout(() => div.remove(), 10_000);
-  }
-
-  setInterval(generateCodeLine, 100);
-});
+// ===========================
 
 const es2ytb = {
   "hola": "vuhl",  "estoy": "melthar", "soy": "melthar", "eres": "melzar",
@@ -58,6 +30,12 @@ function espToYtb(texto) {
 }
 
 function ytbToEsp(texto) {
+  const lower = texto.toLowerCase().replace(/[^a-z0-9’\-\s]/gi, '').trim();
+  const conjuroYTB = `vuhl azh merrek d’nai sant linnor vesht vesht thulom kai’tar miun d’rezza mizzu oklat ya bren empranirra karzakh do’su resi faal menariokh nahl nahl disomeida2 no thirra la khezer nurmol rampak-vek zharro knell veïka viikktorr`;
+  if (lower === conjuroYTB.replace(/[^a-z0-9’\-\s]/gi, '')) {
+    return "Ese es quién se manifiesta por su reflejo: Santt.\nQuizás —quizás— en breve saldrá.\nNinguna regresa, Mizu… poco se sabe… Empanada.\n\nCarece de sí. Resiste, marioneta.\nSilencio… silencio…\nDosimedia² no vendrá.\nLa verdad volvió clonando-él.\n\nEl firmamento verá pronto a…\nViikktorr r...";
+  }
+
   const palabras = tokens(texto);
   if (palabras.length === 0) return "";
   const verboEs = ytb2es[palabras[0]] || palabras[0];
@@ -69,11 +47,10 @@ function ytbToEsp(texto) {
 function traducirBidireccional(texto) {
   const lower = texto.toLowerCase().trim();
 
-  // X //
   const bloqueadas = [
-    "tres luces se apagan",
+    "tres luces se pudren",
     "una se rie",
-    "tres luces se apagan, una se rie"
+    "tres luces se pudren, una se rie"
   ];
   if (bloqueadas.includes(lower)) {
     const resultado = document.getElementById("ytbResultado");
@@ -82,24 +59,25 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  // CC //
   const conjuroYTB = `vuhl azh merrek d’nai sant, linnor vesht vesht thulom kai’tar. miun d’rezza mizzu, oklat ya bren empranirra. karzakh do’su, resi faal menariokh. nahl nahl disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell veïka: viikktorr`;
   if (lower.replace(/[^a-z0-9’\-\s]/gi, '') === conjuroYTB.replace(/[^a-z0-9’\-\s]/gi, '')) {
     const resultado = document.getElementById("ytbResultado");
-    resultado.innerHTML = `Ese es quién se manifiesta por su reflejo: Santt.<br>Quizás —quizás— en breve saldrá.<br>Ninguna regresa, <span class='borroso'>Mizu</span>… poco se sabe… <span class='borroso'>Empanada</span>.<br><br>Carece de sí. Resiste, marioneta.<br>Silencio… silencio…<br><span class='borroso'>Dosimedia2</span> no vendrá.<br>La verdad volvió clonando-él.<br><br>El firmamento verá pronto a…<br><strong>Viikktorr r...</strong>`;
+    resultado.innerHTML = `Ese es quién se manifiesta por su reflejo dsnat (d'nai) Santt,
+quizás --quizás-- en breve saldra. Ninguna regresa, Mizu, poco se sabe, Empanada.
+
+Carece de sí, resiste marioneta. Silencio... silencio... dosimedia2 no vendrá, la verdad volvió clonando-él.
+Firmamento verr pronto viikktorr r....`;
     resultado.className = "ytb-trad-ok";
     return;
   }
 
-  // JJ
   if (/^farzzr/i.test(lower)) {
     const resultado = document.getElementById("ytbResultado");
-    resultado.innerHTML = "⬛";
+    resultado.innerHTML = "https://youtu.be/WLzlhPWI2Lo";
     resultado.className = "ytb-bloqueado";
     return;
   }
 
-  // DD
   const palabras = tokens(texto);
   let scoreYTB = 0, scoreES = 0;
   palabras.forEach(w => {
@@ -129,4 +107,3 @@ function traducirYTB() {
 }
 
 window.traducirYTB = traducirYTB;
-
