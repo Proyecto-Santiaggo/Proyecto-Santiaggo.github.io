@@ -31,6 +31,13 @@ function traducirBidireccional(texto) {
     return;
   }
 
+  if (lower === "zhanth'kar") {
+  const resultado = document.getElementById("ytbResultado");
+  resultado.innerHTML = `<strong>Zhanth'kar</strong> significa: <span style="color:white">"fin absoluto"</span>`;
+  resultado.className = "ytb-trad-ok";
+  return;
+}
+
   const resultado = document.getElementById("ytbResultado");
   resultado.textContent = "No se puede traducir esto.";
   resultado.className = "ytb-trad-ok";
