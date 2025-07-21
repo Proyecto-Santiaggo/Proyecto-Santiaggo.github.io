@@ -31,12 +31,6 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  if (lower === "zhanth'kar") {
-  const resultado = document.getElementById("ytbResultado");
-  resultado.innerHTML = `<span class="corrupto">fin absoluto</span>`;
-  resultado.className = "ytb-trad-ok";
-  return;
-}
 
   const resultado = document.getElementById("ytbResultado");
   resultado.textContent = "No se puede traducir esto.";
