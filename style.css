@@ -48,7 +48,7 @@ body {
 }
 
 #ytb-translator-container h2 {
-  color: white;
+  color: #4a0707;
   font-size: 22px;
   margin-bottom: 10px;
 }
@@ -151,7 +151,7 @@ body {
 .corrupto {
   color: white;
   text-shadow: 0 0 4px #f00, 0 0 6px #fff;
-  animation: corrupto-glitch 1.2s infinite steps(2, jump-none);
+  animation: corrupto-glitch 2.2s infinite steps(2, jump-none);
   display: inline-block;
   filter: contrast(130%) blur(1px);
 }
