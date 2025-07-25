@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>dsn4t.com</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: red;
+      text-shadow: 0 0 12px red;
+    }
+
+    #inputClave {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      background: #111;
+      color: white;
+      border: 1px solid #555;
+      border-radius: 6px;
+    }
+
+    .vhs {
+      animation: flicker 1s infinite alternate;
+      text-shadow: 0 0 2px white, 0 0 5px #0ff;
+    }
+
+    #fecha {
+      display: none;
+      font-size: 14px;
+      margin-top: 30px;
+      opacity: 0.7;
+    }
+
+    #nota {
+      display: none;
+      font-size: 40px;
+      margin-top: 20px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 6px white);
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.8; transform: skewX(0.3deg); }
+      100% { opacity: 1; transform: skewX(-0.3deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">dsn4t.com</h1>
+  <input type="text" id="inputClave" placeholder="Introduce la palabra clave..." onkeyup="verificarClave(event)">
+  <div id="fecha">12/2/25</div>
+  <div id="nota" onclick="reproducir()">𝄞</div>
+  <audio id="musica" src="barro-tal-vez.mp3"></audio>
+
+  <script>
+    function verificarClave(e) {
+      if (e.key === "Enter") {
+        const valor = e.target.value.trim().toUpperCase();
+        if (valor === "HORGB") {
+          document.body.classList.add("vhs");
+          document.getElementById("fecha").style.display = "block";
+          document.getElementById("nota").style.display = "block";
+        }
+      }
+    }
+
+    function reproducir() {
+      const audio = document.getElementById("musica");
+      audio.play();
+    }
+  </script>
+</body>
+</html>
