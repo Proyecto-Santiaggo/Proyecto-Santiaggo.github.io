@@ -20,6 +20,16 @@ function traducirBidireccional(texto) {
     return;
   }
 
+  if (lower === "protocolo MTHa_1") {
+    const resultado = document.getElementById("ytbResultado");
+    resultado.textContent = "Redirigiendo...";
+  resultado.className = "ytb-farzzr";
+  setTimeout(() => {
+    window.location.href = "dsn4t.html";
+  }, 2000);
+  return;
+}
+
   const conjuroOriginal = `vuhl azh merrek d'nai sant, linnor vesht --vesht--thulom kai'tar. miun d'rezza mizzu, oklat ya bren empranirra. karzakh do'su, resi faal menariokh. nahl... nahl.. disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell velka: viikktor.`;
   const textoSinPunt = lower.replace(/[^a-z0-9\\s’'-]/gi, '').replace(/\\s+/g, '');
   const conjuroSinPunt = conjuroOriginal.toLowerCase().replace(/[^a-z0-9\\s’'-]/gi, '').replace(/\\s+/g, '');
