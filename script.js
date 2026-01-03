@@ -40,7 +40,12 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  if (lower === "zhanth'kar") {
+  const normalizado = lower
+  .replace(/’/g, "'")
+  .replace(/[^a-z0-9']/gi, "")
+  .trim();
+
+if (normalizado === "zhanth'kar") {
   const resultado = document.getElementById("ytbResultado");
   resultado.innerHTML = `
     <span class="ytb-farzzr">
@@ -52,6 +57,7 @@ function traducirBidireccional(texto) {
   resultado.className = "ytb-farzzr";
   return;
 }
+
 
 
   const conjuroOriginal = `vuhl azh merrek d'nai sant, linnor vesht --vesht--thulom kai'tar. miun d'rezza mizzu, oklat ya bren empranirra. karzakh do'su, resi faal menariokh. nahl... nahl.. disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell velka: viikktor.`;
