@@ -1,18 +1,20 @@
+/* ===== BASE ===== */
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-color: #050000;
   font-family: monospace;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
+/* ===== CÓDIGOS QUE CAEN ===== */
 .code-stream {
   position: absolute;
   color: rgba(255, 255, 255, 0.2);
   white-space: nowrap;
   font-size: 14px;
-  animation: fall linear;
-  animation-duration: 10s;
+  animation: fall linear 10s;
   pointer-events: none;
 }
 
@@ -21,6 +23,7 @@ body {
   100% { transform: translateY(120vh); }
 }
 
+/* ===== GLITCH WORD ===== */
 .glitch-word {
   display: inline-block;
   animation: flicker 3s infinite;
@@ -32,6 +35,7 @@ body {
   20%, 22%, 24%, 55% { opacity: 0; }
 }
 
+/* ===== CONTENEDOR ===== */
 #ytb-translator-container {
   margin: 60px auto;
   background-color: rgba(0, 0, 0, 0.85);
@@ -53,6 +57,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* ===== INPUT ===== */
 #ytbInput {
   width: 90%;
   height: 100px;
@@ -67,6 +72,7 @@ body {
   resize: none;
 }
 
+/* ===== BOTÓN ===== */
 #ytb-translator-container button {
   margin-top: 10px;
   background-color: #222;
@@ -82,6 +88,7 @@ body {
   background-color: #333;
 }
 
+/* ===== RESULTADO ===== */
 #ytbResultado {
   margin-top: 20px;
   padding: 12px;
@@ -96,6 +103,7 @@ body {
   color: white;
 }
 
+/* ===== TEXTO BORROSO ===== */
 .borroso {
   color: white;
   filter: blur(2px) contrast(120%);
@@ -105,14 +113,15 @@ body {
 }
 
 @keyframes glitch-borroso {
-  0% { transform: translate(0px, 0px); opacity: 1; }
+  0% { transform: translate(0, 0); opacity: 1; }
   20% { transform: translate(1px, -1px); opacity: 0.8; }
   40% { transform: translate(-1px, 1px); opacity: 0.9; }
   60% { transform: translate(1px, 1px); opacity: 1; }
   80% { transform: translate(-1px, -1px); opacity: 0.85; }
-  100% { transform: translate(0px, 0px); opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 1; }
 }
 
+/* ===== FARZZR ===== */
 .ytb-farzzr {
   color: white;
   background-color: #000;
@@ -129,6 +138,7 @@ body {
   to   { text-shadow: 0 0 12px red, 0 0 6px white; }
 }
 
+/* ===== BLOQUEADO ===== */
 .ytb-bloqueado {
   background-color: black;
   color: red;
@@ -138,16 +148,7 @@ body {
   border-radius: 8px;
 }
 
-@media (max-width: 480px) {
-  #ytbInput {
-    height: 80px;
-    font-size: 14px;
-  }
-
-  #ytbResultado {
-    font-size: 15px;
-  }
-
+/* ===== CORRUPTO ===== */
 .corrupto {
   color: white;
   text-shadow: 0 0 4px #f00, 0 0 6px #fff;
@@ -157,21 +158,18 @@ body {
 }
 
 @keyframes corrupto-glitch {
-  0%   { transform: translate(0, 0); opacity: 1; }
-  25%  { transform: translate(1px, -1px); opacity: 0.9; }
-  50%  { transform: translate(-1px, 1px); opacity: 1; }
-  75%  { transform: translate(1px, 1px); opacity: 0.8; }
+  0% { transform: translate(0, 0); opacity: 1; }
+  25% { transform: translate(1px, -1px); opacity: 0.9; }
+  50% { transform: translate(-1px, 1px); opacity: 1; }
+  75% { transform: translate(1px, 1px); opacity: 0.8; }
   100% { transform: translate(0, 0); opacity: 1; }
 }
 
+/* ===== HUMO OSCURO ===== */
 .ytb-humo {
   position: relative;
   color: #c10000;
   font-family: 'Courier New', monospace;
-  text-shadow:
-    0 0 5px rgba(255, 0, 0, 0.4),
-    0 0 15px rgba(120, 0, 0, 0.6),
-    0 0 30px rgba(60, 0, 0, 0.8);
   animation: humo 4s infinite alternate;
 }
 
@@ -190,16 +188,9 @@ body {
       0 0 60px rgba(0, 0, 0, 1);
     filter: blur(1.2px);
   }
-
 }
 
-  
-body {
-  background-color: #050000;
-  overflow: hidden;
-}
-
-
+/* ===== RAYO ROJO ===== */
 .rayo-rojo {
   position: fixed;
   inset: 0;
@@ -213,6 +204,14 @@ body {
   z-index: -1;
 }
 
-  <div class="rayo-rojo" id="rayoRojo"></div>
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  #ytbInput {
+    height: 80px;
+    font-size: 14px;
+  }
 
+  #ytbResultado {
+    font-size: 15px;
+  }
 }
