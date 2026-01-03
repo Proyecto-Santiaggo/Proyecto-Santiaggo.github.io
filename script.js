@@ -44,9 +44,8 @@ function traducirBidireccional(texto) {
   const resultado = document.getElementById("ytbResultado");
   resultado.innerHTML = `
     <span class="ytb-farzzr">
-      Aquel que oscuro busca la d3t3nci0́n del pr0c3s0,<br>
-      n0 s4br3m0s si l0 c0ns3gu1rá,<br>
-      p3r0 0bs3rv4 d3sd3 l0s 0j0s d3l tr41d0r.<br><br>
+      Aquel oscuro busca la d3t3nci0́n del pr0c3s0,<br>
+      0bs3rv4NDO d3sd3 l0s 0j0s d3l tr41D0r.<br><br>
       <strong>D3RVΛ</strong>
     </span>
   `;
