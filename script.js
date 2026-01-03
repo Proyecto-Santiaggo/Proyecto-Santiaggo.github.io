@@ -89,3 +89,24 @@ function traducirYTB() {
 }
 
 window.traducirYTB = traducirYTB;
+
+
+function activarRayoRojo() {
+  const rayo = document.getElementById("rayoRojo");
+  rayo.style.transition = "none";
+  rayo.style.opacity = "0.9";
+
+  setTimeout(() => {
+    rayo.style.transition = "opacity 1.2s ease-out";
+    rayo.style.opacity = "0";
+  }, 100);
+
+  if (Math.random() > 0.6) {
+    setTimeout(() => {
+      rayo.style.opacity = "0.7";
+      setTimeout(() => rayo.style.opacity = "0", 80);
+    }, 250);
+  }
+}
+
+setInterval(activarRayoRojo, Math.random() * 6000 + 4000);
