@@ -3,7 +3,7 @@ function traducirBidireccional(texto) {
 
   if (lower === "protocolo derva_1") {
     const resultado = document.getElementById("ytbResultado");
-    resultado.textContent = "Coordenadas encontradas. Redirigiendo...";
+    resultado.textContent = "Activando Protocolo...";
     resultado.className = "ytb-farzzr";
     setTimeout(() => {
       window.location.href = "dsn4t.html";
@@ -52,7 +52,7 @@ function traducirBidireccional(texto) {
   }
 
   const resultado = document.getElementById("ytbResultado");
-  resultado.textContent = "No se puede traducir esto.";
+  resultado.textContent = "Actualmente no puede revelarse esto.";
   resultado.className = "ytb-trad-ok";
 }
 
