@@ -40,18 +40,7 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  /* ===== PROTOCOLO MTHA ===== */
-  if (lower === "protocolo mtha_1") {
-    const resultado = document.getElementById("ytbResultado");
-    resultado.textContent = "Redirigiendo...";
-    resultado.className = "ytb-farzzr";
-    setTimeout(() => {
-      window.location.href = "dsn4t.html";
-    }, 2000);
-    return;
-  }
-
-  /* ===== ZHANTH'KAR ===== */
+  /* ===== MMMMMMM ===== */
   const normalizado = lower
     .replace(/’/g, "'")
     .replace(/[^a-z0-9']/gi, "")
@@ -69,6 +58,16 @@ function traducirBidireccional(texto) {
     resultado.className = "ytb-farzzr";
     return;
   }
+if (lower === "horgb") {
+  const resultado = document.getElementById("ytbResultado");
+  resultado.innerHTML = `
+    <span class="ytb-farzzr">
+      Empa Tal Vez?
+    </span>
+  `;
+  resultado.className = "ytb-farzzr";
+  return;
+}
 
   /* ===== CONJURO ===== */
   const conjuroOriginal = `vuhl azh merrek d'nai sant, linnor vesht --vesht--thulom kai'tar. miun d'rezza mizzu, oklat ya bren empranirra. karzakh do'su, resi faal menariokh. nahl... nahl.. disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell velka: viikktor.`;
