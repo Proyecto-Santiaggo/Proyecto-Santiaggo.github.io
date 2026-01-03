@@ -164,7 +164,6 @@ body {
   100% { transform: translate(0, 0); opacity: 1; }
 }
 
-/* TEXTO CON HUMO OSCURO */
 .ytb-humo {
   position: relative;
   color: #c10000;
@@ -195,4 +194,25 @@ body {
 }
 
   
+body {
+  background-color: #050000;
+  overflow: hidden;
+}
+
+
+.rayo-rojo {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top,
+    rgba(255, 0, 0, 0.45),
+    rgba(120, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.95)
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+  <div class="rayo-rojo" id="rayoRojo"></div>
+
 }
