@@ -46,7 +46,7 @@ function traducirBidireccional(texto) {
     <span class="ytb-farzzr">
       Aquel oscuro busca la d3t3nci0́n del pr0c3s0,<br>
       0bs3rv4NDO d3sd3 l0s 0j0s d3l tr41D0r.<br><br>
-      <strong>D3RVΛ</strong>
+      <strong>INV'STIGΛ</strong>
     </span>
   `;
   resultado.className = "ytb-farzzr";
