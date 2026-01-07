@@ -69,6 +69,30 @@ if (lower === "horgb") {
   return;
 }
 
+  if (lower === "unreleased") {
+  const resultado = document.getElementById("ytbResultado");
+  resultado.innerHTML = `
+    <div class="ytb-farzzr">
+      <video
+        src="media/unreleased.mp4"
+        autoplay
+        controls
+        loop
+        muted
+        style="
+          width: 100%;
+          filter: contrast(120%) brightness(90%);
+          border-radius: 8px;
+          box-shadow: 0 0 40px rgba(120, 0, 0, 0.6);
+        ">
+      </video>
+    </div>
+  `;
+  resultado.className = "ytb-farzzr";
+  return;
+}
+
+
   /* ===== CONJURO ===== */
   const conjuroOriginal = `vuhl azh merrek d'nai sant, linnor vesht --vesht--thulom kai'tar. miun d'rezza mizzu, oklat ya bren empranirra. karzakh do'su, resi faal menariokh. nahl... nahl.. disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell velka: viikktor.`;
 
