@@ -1,14 +1,15 @@
-/* ===== BASE ===== */
+
 body {
   margin: 0;
   padding: 0;
   background-color: #050000;
   font-family: monospace;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto; 
 }
 
-/* ===== CÓDIGOS QUE CAEN ===== */
+
+
 .code-stream {
   position: absolute;
   color: rgba(255, 255, 255, 0.2);
@@ -23,7 +24,7 @@ body {
   100% { transform: translateY(120vh); }
 }
 
-/* ===== GLITCH WORD ===== */
+
 .glitch-word {
   display: inline-block;
   animation: flicker 3s infinite;
@@ -35,7 +36,7 @@ body {
   20%, 22%, 24%, 55% { opacity: 0; }
 }
 
-/* ===== CONTENEDOR ===== */
+
 #ytb-translator-container {
   margin: 60px auto;
   background-color: rgba(0, 0, 0, 0.85);
@@ -57,7 +58,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* ===== INPUT ===== */
+
 #ytbInput {
   width: 90%;
   height: 100px;
@@ -72,7 +73,7 @@ body {
   resize: none;
 }
 
-/* ===== BOTÓN ===== */
+
 #ytb-translator-container button {
   margin-top: 10px;
   background-color: #222;
@@ -88,7 +89,7 @@ body {
   background-color: #333;
 }
 
-/* ===== RESULTADO ===== */
+
 #ytbResultado {
   margin-top: 20px;
   padding: 12px;
@@ -103,7 +104,7 @@ body {
   color: white;
 }
 
-/* ===== TEXTO BORROSO ===== */
+
 .borroso {
   color: white;
   filter: blur(2px) contrast(120%);
@@ -121,7 +122,6 @@ body {
   100% { transform: translate(0, 0); opacity: 1; }
 }
 
-/* ===== FARZZR ===== */
 .ytb-farzzr {
   color: white;
   background-color: #000;
@@ -138,7 +138,6 @@ body {
   to   { text-shadow: 0 0 12px red, 0 0 6px white; }
 }
 
-/* ===== BLOQUEADO ===== */
 .ytb-bloqueado {
   background-color: black;
   color: red;
@@ -148,7 +147,6 @@ body {
   border-radius: 8px;
 }
 
-/* ===== CORRUPTO ===== */
 .corrupto {
   color: white;
   text-shadow: 0 0 4px #f00, 0 0 6px #fff;
@@ -165,7 +163,6 @@ body {
   100% { transform: translate(0, 0); opacity: 1; }
 }
 
-/* ===== HUMO OSCURO ===== */
 .ytb-humo {
   position: relative;
   color: #c10000;
@@ -190,7 +187,6 @@ body {
   }
 }
 
-/* ===== RAYO ROJO ===== */
 .rayo-rojo {
   position: fixed;
   inset: 0;
@@ -204,7 +200,6 @@ body {
   z-index: -1;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
   #ytbInput {
     height: 80px;
