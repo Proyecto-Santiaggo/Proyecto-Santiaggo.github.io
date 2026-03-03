@@ -93,7 +93,7 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  /* ===== conju ro ===== */
+  /* ===== conjuro ===== */
   const conjuroOriginal = `vuhl azh merrek d'nai sant, linnor vesht --vesht--thulom kai'tar. miun d'rezza mizzu, oklat ya bren empranirra. karzakh do'su, resi faal menariokh. nahl... nahl.. disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell velka: viikktor.`;
 
   const textoSinPunt = lower
@@ -150,7 +150,7 @@ Ahora soy Dsnat";
     return;
   }
 
-  /* ========== */
+  /* ===== xd ===== */
   const resultado = document.getElementById("ytbResultado");
   resultado.textContent = "Actualmente no puede revelarse esto.";
   resultado.className = "ytb-trad-ok";
@@ -173,7 +173,7 @@ function traducirYTB() {
 
 window.traducirYTB = traducirYTB;
 
-/* =====rasho===== */
+/* ===== rasho ===== */
 function activarRayoRojo() {
   const rayo = document.getElementById("rayoRojo");
   if (!rayo) return;
