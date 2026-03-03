@@ -1,7 +1,7 @@
 function traducirBidireccional(texto) {
   const lower = texto.toLowerCase().trim();
 
-  /* ===== PROTOCOLO DERVA ===== */
+  /* ===== PROTOCOLO DERVA 1 ===== */
   if (lower === "protocolo derva_1") {
     const resultado = document.getElementById("ytbResultado");
     resultado.textContent = "Activando Protocolo...";
@@ -12,7 +12,7 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  /* ===== FRASES BLOQUEADAS ===== */
+  /* ===== bloq ===== */
   const bloqueadas = [
     "tres luces se pudren",
     "una se rie",
@@ -26,7 +26,7 @@ function traducirBidireccional(texto) {
     return;
   }
 
-  /* ===== ENTRADAS FARZZR ===== */
+  /* ===== jeje ===== */
   if (/^farzzr/i.test(lower)) {
     const resultado = document.getElementById("ytbResultado");
     resultado.innerHTML = `
@@ -58,42 +58,42 @@ function traducirBidireccional(texto) {
     resultado.className = "ytb-farzzr";
     return;
   }
-if (lower === "horgb") {
-  const resultado = document.getElementById("ytbResultado");
-  resultado.innerHTML = `
-    <span class="ytb-farzzr">
-      Empa Tal Vez?
-    </span>
-  `;
-  resultado.className = "ytb-farzzr";
-  return;
-}
+
+  if (lower === "horgb") {
+    const resultado = document.getElementById("ytbResultado");
+    resultado.innerHTML = `
+      <span class="ytb-farzzr">
+        Empa Tal Vez?
+      </span>
+    `;
+    resultado.className = "ytb-farzzr";
+    return;
+  }
 
   if (lower === "unreleased") {
-  const resultado = document.getElementById("ytbResultado");
-  resultado.innerHTML = `
-    <div class="ytb-farzzr">
-      <video
-        src="media/unreleased.mp4"
-        autoplay
-        controls
-        loop
-        muted
-        style="
-          width: 100%;
-          filter: contrast(120%) brightness(90%);
-          border-radius: 8px;
-          box-shadow: 0 0 40px rgba(120, 0, 0, 0.6);
-        ">
-      </video>
-    </div>
-  `;
-  resultado.className = "ytb-farzzr";
-  return;
-}
+    const resultado = document.getElementById("ytbResultado");
+    resultado.innerHTML = `
+      <div class="ytb-farzzr">
+        <video
+          src="media/unreleased.mp4"
+          autoplay
+          controls
+          loop
+          muted
+          style="
+            width: 100%;
+            filter: contrast(120%) brightness(90%);
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(120, 0, 0, 0.6);
+          ">
+        </video>
+      </div>
+    `;
+    resultado.className = "ytb-farzzr";
+    return;
+  }
 
-
-  /* ===== CONJURO ===== */
+  /* ===== conju ro ===== */
   const conjuroOriginal = `vuhl azh merrek d'nai sant, linnor vesht --vesht--thulom kai'tar. miun d'rezza mizzu, oklat ya bren empranirra. karzakh do'su, resi faal menariokh. nahl... nahl.. disomeida2 no thirra, la khezer nurmol rampak-vek. zharro knell velka: viikktor.`;
 
   const textoSinPunt = lower
@@ -121,13 +121,42 @@ if (lower === "horgb") {
     return;
   }
 
-  /* ===== DEFAULT ===== */
+  /* ===== loq se viene xd===== */
+  const monologoOriginal = `Khal'ren ma tovarsii... Zharu'mek tal enra dosh'medhia. pero thren'ak torun vel'kai reh'ta silen.
+
+Aru'mae... ven'ther solin. Narka'íth vel drosh Triunvirath. ni'ther okhaal Ozir Roshaad...
+
+Aru'tae...
+
+Aru'tae Dsnat`;
+
+  const monologoSinPunt = monologoOriginal
+    .toLowerCase()
+    .replace(/’/g, "'")
+    .replace(/[^a-z0-9\s']/gi, "")
+    .replace(/\s+/g, "");
+
+  const inputNormalizado = texto
+    .toLowerCase()
+    .replace(/’/g, "'")
+    .replace(/[^a-z0-9\s']/gi, "")
+    .replace(/\s+/g, "");
+
+  if (inputNormalizado === monologoSinPunt) {
+    const resultado = document.getElementById("ytbResultado");
+    resultado.textContent = "Quizás me faltaron cosas... tenía más para contar sobre el Dosimedia. pero ellos tres no quieren que hable. Creo que con esto será suficiente… Ahora soy más que el Triunvirato o el Ojo Rosado... Ahora soy...
+Ahora soy Dsnat";
+    resultado.className = "ytb-trad-ok";
+    return;
+  }
+
+  /* ========== */
   const resultado = document.getElementById("ytbResultado");
   resultado.textContent = "Actualmente no puede revelarse esto.";
   resultado.className = "ytb-trad-ok";
 }
 
-/* ===== BOTÓN ===== */
+/* ===== boton ===== */
 function traducirYTB() {
   const inputEl = document.getElementById("ytbInput");
   const resultEl = document.getElementById("ytbResultado");
@@ -144,7 +173,7 @@ function traducirYTB() {
 
 window.traducirYTB = traducirYTB;
 
-/* ===== RAYOS ROJOS ===== */
+/* =====rasho===== */
 function activarRayoRojo() {
   const rayo = document.getElementById("rayoRojo");
   if (!rayo) return;
